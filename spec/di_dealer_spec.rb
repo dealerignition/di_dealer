@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'dealer'
+require 'di_dealer'
 
 describe DIDealer do
   describe "#configure" do

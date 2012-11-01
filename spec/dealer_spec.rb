@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'dealer'
+require 'di_dealer'
 
 describe Dealer do
   before(:all) { DIDealer.configure({ api_key: "SUPER SECRET API" }) }
