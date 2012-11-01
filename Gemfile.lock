@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    di_dealer (0.2.0)
+    di_dealer (0.2.1)
       nestful
       rails (~> 3.2.8)
 

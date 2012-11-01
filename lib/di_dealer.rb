@@ -19,7 +19,7 @@ module DIDealer
 
   def self.configure options = {}
     @options = {
-      url: "https://www.dealerignition.com/api/dealers",
+      url: "https://app.dealerignition.com/api/dealers",
       api_key: nil
     }
     @options.merge! options

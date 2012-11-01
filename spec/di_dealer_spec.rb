@@ -28,7 +28,7 @@ describe DIDealer do
 
       it "sets default url" do
         DIDealer.configure
-        DIDealer.options[:url].should == "https://www.dealerignition.com/api/dealers"
+        DIDealer.options[:url].should == "https://app.dealerignition.com/api/dealers"
       end
     end
   end
