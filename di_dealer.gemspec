@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Dealer Ignition"]
   s.email       = ["support@dealerignition.com"]
   s.homepage    = "http://app.dealerignition.com/"
-  s.summary     = ""
-  s.description = ""
+  s.description = "Adds a Rails Dealer model to apps that need to use the Dealer Ignition API."
+  s.summary     = s.description
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
