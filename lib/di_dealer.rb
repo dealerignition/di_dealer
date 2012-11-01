@@ -3,8 +3,18 @@ require 'active_model'
 require 'rails'
 
 module DIDealer
+  NotConfiguredError = Class.new(StandardError)
+
   def self.options
+    if @options.nil?
+      raise NotConfiguredError.new "Run DIDealer.configure in the Rails setup before attempting to load a dealer."
+    end
+
     @options
+  end
+
+  def self.options= options
+    @options = options
   end
 
   def self.configure options = {}
