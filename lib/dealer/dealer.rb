@@ -7,14 +7,25 @@ class Dealer
 
   def self.find(id, brand = nil)
     Rails.cache.fetch :dealer => id, :brand => brand do
-       dealer = JSON.parse(Nestful.get(
-         DIDealer.options[:url] + "/#{id}.json" + (brand.nil? ? "" : "&brand=#{ brand }"),
-         :headers => DIDealer.api_headers))
-       Dealer.new(dealer)
+      # Always cache the JSON, it never changes
+      dealer = Rails.cache.fetch :dealer => id do
+        JSON.parse(Nestful.get(
+        DIDealer.options[:url] + "/#{id}.json",
+        :headers => DIDealer.api_headers))
+      end
+
+      Dealer.new(dealer, brand)
     end
   end
 
-  def initialize(dealer)
+  def initialize(dealer, brand=nil)
+    if brand
+      dealer["active_promotions"].keep_if do |promotion|
+        promotion["brand_name"].parameterize == brand
+      end
+    end
+    dealer["active_promotions"].collect! { |promotion| promotion["promotion_id"] } if dealer["active_promotions"]
+
     ATTRIBUTES.each do |a|
       self.instance_variable_set "@#{a}", dealer[a.to_s]
     end
