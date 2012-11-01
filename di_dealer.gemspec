@@ -6,9 +6,9 @@ Gem::Specification.new do |s|
   s.version     = "0.0.1"
   s.authors     = ["Dealer Ignition"]
   s.email       = ["support@dealerignition.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Dealer."
-  s.description = "TODO: Description of Dealer."
+  s.homepage    = "http://app.dealerignition.com/"
+  s.summary     = ""
+  s.description = ""
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
