@@ -2,7 +2,7 @@ class Dealer
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  ATTRIBUTES = [:address_1, :address_2, :city, :id, :name, :phone, :state, :website, :zipcode, :active_catalogs, :active_promotions, :latitude, :longitude]
+  ATTRIBUTES = [:address_1, :address_2, :city, :id, :name, :phone, :state, :website, :zipcode, :active_catalogs, :active_promotions, :latitude, :longitude, :logo_url]
   ATTRIBUTES.each { |a| attr_accessor a }
 
   def self.find(id, brand = nil)
