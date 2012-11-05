@@ -44,4 +44,12 @@ class Dealer
   def persisted?
     true
   end
+
+  def to_liquid
+    keys = {}
+    [:name, :address_1, :address_2, :city, :state, :zipcode, :phone, :website, :logo_url].each do |key|
+      keys[key.to_s] = self.send(key)
+    end
+    keys
+  end
 end
