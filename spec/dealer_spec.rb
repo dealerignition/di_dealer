@@ -96,10 +96,26 @@ describe Dealer do
     it { Dealer.model_name.should be_kind_of(ActiveModel::Name) }
   end
 
-  describe ".persisted?" do
+  describe "#persisted?" do
     before do
       @dealer = Dealer.new({ id: 1 })
     end
     it { @dealer.persisted?.should be_true }
+  end
+
+  describe "#to_liquid" do
+    subject { Dealer.find(1).to_liquid }
+
+    it { should be_instance_of Hash }
+    it { should include "address_1" }
+    it { should include "address_2" }
+    it { should include "city" }
+    it { should include "state" }
+    it { should include "zipcode" }
+    it { should include "name" }
+    it { should include "phone" }
+    it { should include "logo_url" }
+    it { should_not include "active_catalogs" }
+    it { should_not include "active_promotions" }
   end
 end
