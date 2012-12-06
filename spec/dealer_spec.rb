@@ -118,4 +118,18 @@ describe Dealer do
     it { should_not include "active_catalogs" }
     it { should_not include "active_promotions" }
   end
+
+  describe ".get_closest_dealers" do
+    before do
+      stub_request(:get, "http://localhost:3000/api/dealers/closest.json").
+        with(:headers => {'Accept'=>'*/*', 'Api-Key'=>'SUPER SECRET API', 'User-Agent'=>'Ruby'}).
+        to_return(:status => 200, :body => '[{"address_1":"700 East North St","address_2":"","city":"Greenville","id":1,"latitude":"34.851803","longitude":"-82.39057699999999","name":"Demo Dealer","phone":"888-344-6483","state":"SC","website":"http://theflooringconnection.com","zipcode":"29601","logo_url":"http://s3.amazonaws.com/dealer_ignition_new/normal/1/flooring-logo.jpg?1346264159"},{"address_1":"459 Marion Ave","address_2":"","city":"Spartanburg","id":7,"latitude":"34.944963","longitude":"-81.9147706","name":"Hodge Carpets","phone":"864-573-9288","state":"SC","website":"http://www.hodgecarpets.com","zipcode":"29303","logo_url":"http://s3.amazonaws.com/dealer_ignition_new/normal/7/HODGECLR.gif?1349702638"},{"address_1":"2929-J Eskridge Rd","address_2":"","city":"Fairfax","id":2,"latitude":"38.870947","longitude":"-77.23236300000001","name":"Tafti & Co","phone":"202-701-4500","state":"VA","website":"http://www.taftico.com/","zipcode":"22031","logo_url":"/logos/normal/missing.png"},{"address_1":"6185 Baltimore Pike","address_2":"","city":"Littlestown","id":6,"latitude":"39.7343612","longitude":"-77.0763164","name":"Myers Floors & Interiors","phone":"717-359-5460","state":"PA","website":"http://www.myersfloors.net","zipcode":"17340","logo_url":"/logos/normal/missing.png"},{"address_1":"43223 12 Mile Road","address_2":"","city":"Novi","id":5,"latitude":"42.494978","longitude":"-83.473972","name":"Hagopian World of Rugs","phone":"248-449-7847","state":"MI","website":"http://www.originalhagopian.com","zipcode":"48377","logo_url":"/logos/normal/missing.png"},{"address_1":"401 2nd Street","address_2":"","city":"Coralville","id":8,"latitude":"41.671574","longitude":"-91.572237","name":"Randy\'s Carpets & Interiors","phone":"319-354-4344","state":"IA","website":"http://www.randyscarpets.com/","zipcode":"52241","logo_url":"http://s3.amazonaws.com/dealer_ignition_new/normal/8/CompanyWelcome.jpeg?1349728334"},{"address_1":"10301 Woodcrest Dr. NW","address_2":"","city":"Coon Rapids","id":4,"latitude":"45.157057","longitude":"-93.281418","name":"HOM Furniture","phone":"1-763-772-1560","state":"MN","website":"http://www.homfurniture.com/","zipcode":"55433","logo_url":"/logos/normal/missing.png"}]', :headers => {})
+    end
+
+    subject { Dealer.get_closest_dealers "75.136.156.45" }
+
+    it { should be_instance_of Array }
+    its(:size) { should <= 10 }
+    its(:first) { should be_instance_of Dealer }
+  end
 end

@@ -13,10 +13,14 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   s.add_dependency "rails", "~> 3.2.8"
+
+  # For HTTP Requests
   s.add_dependency "nestful"
 
-  s.add_development_dependency "sqlite3"
+  # For latitude & longitude calculations
+  s.add_dependency "geocoder"
 
+  s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec"
   s.add_development_dependency "shoulda"
   s.add_development_dependency "webmock"
