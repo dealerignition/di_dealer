@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "di_dealer"
-  s.version     = "0.2.5"
+  s.version     = "0.2.6"
   s.authors     = ["Dealer Ignition"]
   s.email       = ["support@dealerignition.com"]
   s.homepage    = "http://app.dealerignition.com/"
@@ -16,9 +16,6 @@ Gem::Specification.new do |s|
 
   # For HTTP Requests
   s.add_dependency "nestful"
-
-  # For latitude & longitude calculations
-  s.add_dependency "geocoder"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec"

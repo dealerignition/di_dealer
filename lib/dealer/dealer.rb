@@ -54,6 +54,6 @@ class Dealer
   end
 
   def self.get_closest_dealers ip
-    JSON.parse(Nestful.get(DIDealer.options[:url] + "/closest.json", :headers => DIDealer.api_headers)).collect { |dealer| Dealer.new(dealer) }
+    JSON.parse(Nestful.get(DIDealer.options[:url] + "/closest.json?ip=#{ ip }", :headers => DIDealer.api_headers)).collect { |dealer| Dealer.new(dealer) }
   end
 end

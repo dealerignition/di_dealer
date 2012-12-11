@@ -1,8 +1,7 @@
 PATH
   remote: .
   specs:
-    di_dealer (0.2.2)
-      geocoder
+    di_dealer (0.2.6)
       nestful
       rails (~> 3.2.8)
 
@@ -44,7 +43,6 @@ GEM
     diff-lcs (1.1.3)
     erubis (2.7.0)
     ffi (1.1.5)
-    geocoder (1.1.5)
     guard (1.5.3)
       listen (>= 0.4.2)
       lumberjack (>= 1.0.2)
